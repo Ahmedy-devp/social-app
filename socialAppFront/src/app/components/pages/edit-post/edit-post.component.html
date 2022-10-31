@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<div class="card gedf-card container mt-5 w-50">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-tabs" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link active text-secondary"
+          id="pills-home-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-home"
+          type="button"
+          role="tab"
+          aria-controls="pills-home"
+          aria-selected="false"
+          >Make a publication</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link text-primary"
+          id="pills-profile-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-profile"
+          type="button"
+          role="tab"
+          aria-controls="pills-profile"
+          aria-selected="true"
+          >Images</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="tab-content" id="pills-tabContent">
+      <div
+        class="tab-pane fade active show"
+        id="pills-home"
+        role="tabpanel"
+        aria-labelledby="pills-home-tab"
+        tabindex="0"
+      >
+        <form [formGroup]="editForm" (ngSubmit)="editPost(_auth.result)">
+          <label class="sr-only" for="message">post</label>
+          <input type="text" placeholder="title"  />
+          <textarea
+            class="form-control"
+            id="message"
+            rows="3"
+            placeholder="What are you thinking?"
+          ></textarea>
+          <div class="btn-group">
+            <button class="btn btn-primary">share</button>
+          </div>
+          <input type="file" (change)="changeMyImg($event)">
+        </form>
+      </div>
+    </div>
+    <div class="btn-toolbar justify-content-between">
+      <div class="btn-group">
+        <button
+          id="btnGroupDrop1"
+          type="button"
+          class="btn btn-link dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fa fa-globe"></i>
+        </button>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="btnGroupDrop1"
+        >
+          <a class="dropdown-item" href="#"
+            ><i class="fa fa-globe"></i> Public</a
+          >
+          <a class="dropdown-item" href="#"
+            ><i class="fa fa-users"></i> Friends</a
+          >
+          <a class="dropdown-item" href="#"
+            ><i class="fa fa-user"></i> Just me</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white fw-bolder fs-3 p" href="#">Amadeus Social</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active text-white"
+            aria-current="page"
+            routerLink="/posts"
+            >Home</a
+          >
+        </li>
+      </ul>
+      <img routerLink="/profile"
+      class="rounded-circle shadow-1-strong me-3"
+      src="http://localhost:3000/{{ this._auth.userData.profileImage }}"
+      alt="avatar"
+      width="40"
+      height="40"
+    />
+      <li class="nav-item dropdown list-unstyled me-5">
+        <a
+          class="nav-link dropdown-toggle text-white me-5"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          *ngIf="_auth.isLoggedIn"
+        >
+          {{this._auth.userData?.['name']}}
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" (click)="logout()">LogOut</a></li>
+        </ul>
+      </li>
+
+    </div>
+  </div>
+</nav>
