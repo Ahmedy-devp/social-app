@@ -67,6 +67,10 @@ export class AuthService {
     return this._http.patch(`${this.commonUrl}/article/addLikes/${id}`,null)
   }
   editPost(id:any,data:any):Observable<any>{
+
     return this._http.patch(`${this.commonUrl}/article/editArticle/${id}`,data)
+  }
+  singlePost(id:any):Observable<any>{
+    return this._http.get(`${this.commonUrl}/article/single/${id}`)
   }
 }

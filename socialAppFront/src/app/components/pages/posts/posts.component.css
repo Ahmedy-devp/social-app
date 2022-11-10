@@ -21,12 +21,19 @@ body {
       margin-bottom: 2.77rem;
   }
 }
+#postImg{
+  display:none
+}
+.img-spec{
+  cursor: pointer;
+}
 
 /**Reset Bootstrap*/
 .dropdown-toggle::after {
   content: none;
   display: none;
 }
+
 /*
 *
 * ===========================================================

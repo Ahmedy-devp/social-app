@@ -119,10 +119,7 @@ class Article {
   static userUpdate = async (req, res) => {
     try {
       const data = await articleModel.find({ userId: req.user._id });
-      console.log(data);
       data.forEach(async (d) => {
-        console.log(d.name);
-        console.log(req.user.name);
         d.name = req.user.name;
         d.profileImage = req.user.profileImage;
         await d.save();
@@ -130,17 +127,15 @@ class Article {
       const data1 = await articleModel.find();
       data1.forEach(async (d) => {
         d.comments.forEach((c) => {
-          console.log(c.comment.userId.toString() == req.user._id.toString());
-          console.log(req.user._id);
+          
           if (c.comment.userId.toString() == req.user._id.toString()) {
-            console.log(1);
             c.comment.name = req.user.name;
             c.comment.profileImage = req.user.profileImage;
           }
         });
         await d.save();
       });
-
+ data.save()
       resBuilder(res, true, {data,data1}, "all articles");
     } catch (e) {
       resBuilder(res, false, e, e.message);
@@ -172,15 +167,16 @@ static editPost= async (req, res) => {
   try
   {
     const user = await articleModel.findById(req.params.id);
-      if (user.userId.toString() != req.user.id)
+      if (user.userId.toString() != req.user._id.toString())
         throw new Error("you can't edit that post");
-    const data = await articleModel.findByIdAndUpdate(
-      req.params.id
-      , req.body,
-      {runValidators:true}
-      )
-      await data.save()
-      resBuilder(res, true, data, "done");
+  
+    if(req.file){
+        user.image = req.file.path.replace("static\\", "");
+      }
+    user.title = req.body.title
+    user.body = req.body.body
+      await user.save()
+      resBuilder(res, true, user, "done");
   }
   catch (e) {
     resBuilder(res, false, e, e.message);

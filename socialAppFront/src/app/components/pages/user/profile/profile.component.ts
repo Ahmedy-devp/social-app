@@ -34,14 +34,14 @@ file:any
 changeMyImg(event:any){
   this.file=event.target.files[0]
   const myData = new FormData();
-    myData.append('img', this.file,this.file.name)
-    this._auth.editImg(myData).subscribe(
-      (res) => {console.log(res)
+  myData.append('img', this.file,this.file.name)
+  this._auth.editImg(myData).subscribe(
+    (res) => {console.log(res)
+      this.userUpdate()
       this._auth.userData.profileImage=res.data.profileImage;},
       (err) => console.log(err),
       () => console.log('done')
     );
-    this.userUpdate()
   }
   userUpdate(){
     this._auth.userUpdate().subscribe(
@@ -55,6 +55,7 @@ changeMyImg(event:any){
       (res) => {
         console.log(res);
         this.userPost = res.data;
+        this.userPost.reverse()
         console.log();
       },
       (err) => console.log(err),
@@ -74,8 +75,6 @@ this.getUserPost()
   addComment(id: any) {
     this._auth.addComment(this.commentForm.value, id).subscribe(
       (res) => {
-        console.log(res);
-        console.log(this._auth.result);
 this.getUserPost()
       },
       (err) => console.log(err),
@@ -90,6 +89,16 @@ this.getUserPost()
       },
       (err) => console.log(err),
       () => console.log('post deleted')
+    );
+  }
+  addLike(id: any) {
+    this._auth.addLike(id).subscribe(
+      (res) => {
+
+        this.getUserPost()
+      },
+      (err) => console.log(err),
+      () =>''
     );
   }
 }

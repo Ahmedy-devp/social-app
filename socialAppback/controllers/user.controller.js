@@ -49,7 +49,7 @@ class User {
   static editProfile = async (req, res) => {
     try {
       const user = req.body;
-      const editedKeys = ["name", "email"];
+      const editedKeys = ["name", "email","password"];
       const keys = Object.keys(user);
       const isValid = keys.every((k) => {
         return editedKeys.includes(k);

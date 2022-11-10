@@ -16,22 +16,10 @@
           >Make a publication</a
         >
       </li>
-      <li class="nav-item" role="presentation">
-        <a
-          class="nav-link text-primary"
-          id="pills-profile-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#pills-profile"
-          type="button"
-          role="tab"
-          aria-controls="pills-profile"
-          aria-selected="true"
-          >Images</a
-        >
-      </li>
+
     </ul>
   </div>
-  <div class="card-body">
+  <div class="card-body" >
     <div class="tab-content" id="pills-tabContent">
       <div
         class="tab-pane fade active show"
@@ -40,48 +28,22 @@
         aria-labelledby="pills-home-tab"
         tabindex="0"
       >
-        <form [formGroup]="editForm" (ngSubmit)="editPost(_auth.result)">
-          <label class="sr-only" for="message">post</label>
-          <input type="text" placeholder="title"  />
+        <form [formGroup]="editForm" (ngSubmit)="editPost()">
+          <label  class="sr-only" for="message">post</label>
+          <input class="mb-2 form-control w-50" formControlName="title" type="text" placeholder="title"  />
           <textarea
             class="form-control"
             id="message"
             rows="3"
             placeholder="What are you thinking?"
-          ></textarea>
-          <div class="btn-group">
-            <button class="btn btn-primary">share</button>
-          </div>
-          <input type="file" (change)="changeMyImg($event)">
+            formControlName="body"
+            ></textarea>
+            <input  id="postImg" type="file" (change)="changeMyImg($event)">
+            <label class="img-spec position-absolute bottom-0 end-0 me-3 mb-2 fs-4" for="postImg"><i class="fa fa-camera"></i></label>
+            <div class="btn-group">
+              <button class="btn btn-primary mt-3">share</button>
+            </div>
         </form>
-      </div>
-    </div>
-    <div class="btn-toolbar justify-content-between">
-      <div class="btn-group">
-        <button
-          id="btnGroupDrop1"
-          type="button"
-          class="btn btn-link dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i class="fa fa-globe"></i>
-        </button>
-        <div
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="btnGroupDrop1"
-        >
-          <a class="dropdown-item" href="#"
-            ><i class="fa fa-globe"></i> Public</a
-          >
-          <a class="dropdown-item" href="#"
-            ><i class="fa fa-users"></i> Friends</a
-          >
-          <a class="dropdown-item" href="#"
-            ><i class="fa fa-user"></i> Just me</a
-          >
-        </div>
       </div>
     </div>
   </div>

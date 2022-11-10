@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/pages/user/profile/profile.compon
 import { PostsComponent } from './components/pages/posts/posts.component';
 import { EditProfileComponent } from './components/pages/user/edit-profile/edit-profile.component';
 import { EditPostComponent } from './components/pages/edit-post/edit-post.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EditPostComponent } from './components/pages/edit-post/edit-post.compon
     PostsComponent,
     EditProfileComponent,
     EditPostComponent,
+    DateAgoPipe,
   ],
   imports: [
     BrowserModule,

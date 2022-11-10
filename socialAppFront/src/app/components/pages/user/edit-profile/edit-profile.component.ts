@@ -13,6 +13,7 @@ export class EditProfileComponent implements OnInit {
   editForm = new FormGroup({
     name:new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(20)]),
     email:new FormControl('',[Validators.email]),
+    password:new FormControl('',[Validators.required,Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)])
 
   })
 

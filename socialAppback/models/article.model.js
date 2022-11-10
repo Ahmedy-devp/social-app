@@ -8,8 +8,8 @@ const articleSchema = mongoose.Schema(
     },
     name: { type: String, required: true, ref: "User" },
     profileImage: { type: String, trim: true, ref: "User"},
-    title: { type: String, required: true, trim: true },
-    body: { type: String, required: true, trim: true },
+    title: { type: String,  trim: true },
+    body: { type: String,  trim: true },
     image: { type: String, trim: true},
     comments: [
       {

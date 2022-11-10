@@ -6,7 +6,7 @@ const upload = require("../middleware/fileUpload.middleware");
 
 
 router.post("/addArticle", auth,authUser,upload.single("img"), Article.addArticle);
-router.patch("/editArticle/:id", auth,authUser, Article.editPost)
+router.patch("/editArticle/:id", auth,authUser,upload.single("img"), Article.editPost)
 router.patch("/addComment/:id", auth, authUser, Article.addComment);
 router.patch("/addLikes/:id", auth, authUser, Article.addLikes);
 router.delete("/delComment/:id/:commId", auth, authUser, Article.delComment);
